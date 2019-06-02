@@ -1,0 +1,53 @@
+version: '3.5'
+services:
+  apache:
+    build: .docker/apache
+    container_name: apache
+    ports:
+      - 80:80
+    volumes:
+      - ".:/home/wwwroot:cached"
+      - ".docker/config/vhosts:/etc/apache2/sites-enabled:cached"
+      - ".docker/logs/apache:/var/log/apache2/:cached"
+    depends_on:
+      - php
+    networks:
+      - network
+
+  mysql:
+    image: mysql
+    command: "--default-authentication-plugin=mysql_native_password"
+    container_name: mysql
+    volumes:
+      - "dbdata:/var/lib/mysql"
+      - "dump:/home/wwwroot/dump"
+    environment:
+      MYSQL_ROOT_PASSWORD: sf4
+      MYSQL_DATABASE: sf4
+      MYSQL_USER: sf4
+      MYSQL_PASSWORD: sf4
+    ports:
+      - 3306:3306
+    networks:
+      - network
+
+  php:
+    build: .docker/php
+    container_name: php
+    working_dir: /home/wwwroot
+    volumes:
+      - ".:/home/wwwroot:cached"
+      - "./var/logs:/app/var/logs"
+      - "./var/cache.:/app/var/cache"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    networks:
+      - network
+networks:
+  network:
+
+volumes:
+  dbdata:
+  dump:
