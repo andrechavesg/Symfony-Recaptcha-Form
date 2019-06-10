@@ -1,4 +1,30 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
+    <h1>Formulário de contato</h1>
+    <form class="form-group" method="POST" action="/envia">
+        <input id="recaptchaToken" name="recaptchaToken" type="hidden">
+        <label class="form-row">
+            Nome: <input name="nome" type="text">
+        </label>
+        <label class="form-row">
+            Assunto: <input name="assunto" type="text">
+        </label>
+        <label class="form-row">
+            E-mail: <input name="email" type="email">
+        </label>
+        <label class="form-row">
+            Conteúdo: <textarea name="conteudo"></textarea>
+        </label>
+        <button class="btn btn-success">enviar</button>
+    </form>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc5DKgUAAAAAIejovEpTX6XImCrwRlQawRbbyNL"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6Lc5DKgUAAAAAIejovEpTX6XImCrwRlQawRbbyNL', {action: 'formularioDeContato'}).then(function(token) {
+                document.getElementById('recaptchaToken').value = token;
+            });
+        });
+    </script>
 {% endblock %}

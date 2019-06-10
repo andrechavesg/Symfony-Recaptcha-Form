@@ -390,3 +390,7 @@ AH00112: Warning: DocumentRoot [/home/wwwroot/ataba/public] does not exist
 [Fri May 31 23:18:22.354574 2019] [core:warn] [pid 8:tid 140116539621440] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
 [Fri May 31 23:18:22.355904 2019] [mpm_event:notice] [pid 8:tid 140116539621440] AH00489: Apache/2.4.25 (Debian) OpenSSL/1.0.2r configured -- resuming normal operations
 [Fri May 31 23:18:22.375701 2019] [core:notice] [pid 8:tid 140116539621440] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND -e info'
+[Mon Jun 10 13:57:59.065516 2019] [ssl:info] [pid 15:tid 139697970122816] AH01883: Init: Initialized OpenSSL library
+[Mon Jun 10 13:57:59.083287 2019] [ssl:info] [pid 15:tid 139697970122816] AH01883: Init: Initialized OpenSSL library
+[Mon Jun 10 13:57:59.084573 2019] [mpm_event:notice] [pid 15:tid 139697970122816] AH00489: Apache/2.4.25 (Debian) OpenSSL/1.0.2r configured -- resuming normal operations
+[Mon Jun 10 13:57:59.085035 2019] [core:notice] [pid 15:tid 139697970122816] AH00094: Command line: '/usr/sbin/apache2 -D FOREGROUND -e info'
